@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, FlatList, Text, AsyncStorage, KeyboardAvoidingView } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import { Swipeable } from 'react-native-gesture-handler';
-import { Chip } from 'react-native-paper';
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,113 +70,159 @@ const TodoApp = () => {
     setEditText('');
   };
 
+  const filteredTodos = () => {
+    switch (filter) {
+      case 'all':
+        return todos;
+      case 'done':
+        return todos.filter((todo) => todo.completed);
+      case 'not-done':
+        return todos.filter((todo) => !todo.completed);
+      default:
+        return todos;
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <FlatList
-        data={todos}
-        renderItem={({ item }) => (
-          <Swipeable
-            renderLeftActions={editingKey === item.key ? () => (
-              <Button style={styles.swipeButtonSave} onPress={saveEdit}>Save</Button>
-            ) : () => (
-              <Button style={styles.swipeButtonEdit} onPress={() => handleEditPress(item.key, item.text)}>Edit</Button>
-            )}
-            renderRightActions={() => (
-              <Button style={styles.swipeButtonDelete} onPress={() => removeTodo(item.key)}>Delete</Button>
-            )
-            }
-          >
-            <View style={styles.todoContainer}>
-              <Text
-                style={[styles.todo, item.completed ? styles.completed : null]}
-                onPress={() => handleTodoPress(item.key)}
-              >
-                {item.text}
-              </Text>
-            </View>
-          </Swipeable >
+      <View style={styles.header}>
+        <Chip selected={filter === 'all'} style={styles.chip} onPress={() => setFilter('all')}>
+          Všetky
+        </Chip>
+        <Chip selected={filter === 'done'} style={styles.chip} onPress={() => setFilter('done')}>
+          Hotovo
+        </Chip>
+        <Chip selected={filter === 'not-done'} style={styles.chip} onPress={() => setFilter('not-done')}>
+          Nevykonáva sa
+        </Chip>
+      </View>
+      {/* <KeyboardAvoidingView style={styles.todoList} behavior="padding"> */}
+        <FlatList
+          data={filteredTodos()}
+          renderItem={({ item }) => (
+            <Swipeable renderRightActions={(_, dragX) => (
+              <View style={styles.rightActions}>
+                {item.key === editingKey ? (
+                  <View style={styles.editActions}>
+                    <Button onPress={saveEdit}>Uložiť</Button>
+                  </View>
+                ) : (
+                  <View style={styles.swipeActions}>
+                    <Button onPress={() => handleEditPress(item.key, item.text)}>Upraviť</Button>
+                    <Button onPress={() => removeTodo(item.key)}>Vymazať</Button>
+                  </View>
+                )}
+              </View>
+            )}>
+              <View style={styles.todoItem}>
+                <Checkbox
+                  status={item.completed ? 'checked' : 'unchecked'}
+                  onPress={() => handleTodoPress(item.key)}
+                />
+                <Text
+                  style={[
+                    styles.todoText,
+                    item.completed ? styles.completed : null,
+                    item.key === editingKey ? styles.editing : null
+                  ]}
+                  onPress={() => handleTodoPress(item.key)}
+                >
+                  {item.text}
+                </Text>
+              </View>
+            </Swipeable>
+          )}
+        />
+        {editingKey ? (
+          <TextInput
+            style={styles.todoInput}
+            value={editText}
+            onChangeText={setEditText}
+            onSubmitEditing={saveEdit}
+          />
+        ) : (
+          <TextInput
+            style={styles.todoInput}
+            value={text}
+            onChangeText={setText}
+            onSubmitEditing={addTodo}
+            placeholder="Pridať úlohu"
+            returnKeyType="done"
+            blurOnSubmit={false}
+          />
         )}
-      />
-      {
-        editingKey !== null ? (//style={styles.inputContainer}
-          <KeyboardAvoidingView behavior="padding" >
-            <TextInput
-              //style={styles.input}
-              value={editText}
-              onChangeText={(text) => setEditText(text)}
-              onSubmitEditing={saveEdit}
-            />
-          </KeyboardAvoidingView>
-        ) : (//style={styles.inputContainer}
-          <KeyboardAvoidingView behavior="padding" >
-            <TextInput
-              //style={styles.input}
-              value={text}
-              onChangeText={(text) => setText(text)}
-              onSubmitEditing={addTodo}
-              placeholder="Pridajte položku úlohy"
-            />
-          </KeyboardAvoidingView>
-        )
-      }
-    </View >
+      {/* </KeyboardAvoidingView> */}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
-    padding: 20,
+    backgroundColor: '#f5f5f5',
   },
-  todoContainer: {
-    marginVertical: 10,
-    padding: 20,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#DDDDDD',
-    borderRadius: 10,
-    shadowColor: '#000000',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    elevation: 3,
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 8,
+    backgroundColor: '#fff',
+    elevation: 4,
   },
-  todo: {
+  todoList: {
+    flex: 1,
+    padding: 8,
+    backgroundColor: '#fff',
+  },
+  todoItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 8,
+    backgroundColor: '#fff',
+  },
+  todoText: {
+    flex: 1,
     fontSize: 16,
+    marginLeft: 8,
   },
   completed: {
     textDecorationLine: 'line-through',
-    color: '#BBBBBB',
+    color: 'gray',
   },
-  inputContainer: {
-    marginTop: 20,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#DDDDDD',
-    borderRadius: 10,
-    padding: 10,
+  editing: {
+    backgroundColor: '#f9f9f9',
   },
-  input: {
+  todoInput: {
+    height: 48,
+    backgroundColor: '#fff',
+    padding: 8,
+    margin: 8,
     fontSize: 16,
+    elevation: 4,
   },
-  swipeButtonEdit: {
-    paddingTop: 20,
-    borderRadius: 15,
-    padding: 20,
+  rightActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    justifyContent: 'flex-end',
   },
-  swipeButtonSave: {
-    paddingTop: 20,
-    borderRadius: 15,
-    padding: 20,
+  swipeActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    padding: 8,
+    width: 160,
+    justifyContent: 'flex-end',
   },
-  swipeButtonDelete: {
-    paddingTop: 20,
-    borderRadius: 15,
-    padding: 20,
+  editActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'yellow',
+    padding: 8,
+    width: 128,
+    justifyContent: 'flex-end',
+  },
+  chip: {
+    margin: 4,
   },
 });
 

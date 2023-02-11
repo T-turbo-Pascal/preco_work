@@ -2198,12 +2198,17 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
-"@react-native-community/datetimepicker@^6.7.3":
-  version "6.7.3"
-  resolved "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-6.7.3.tgz"
-  integrity sha512-fXWbEdHMLW/e8cts3snEsbOTbnFXfUHeO2pkiDFX3fWpFoDtUrRWvn50xbY13IJUUKHDhoJ+mj24nMRVIXfX1A==
+"@react-native-community/datetimepicker@6.5.2":
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-6.5.2.tgz#d2c0df9f2c6acce39f7e957743dd811547656098"
+  integrity sha512-9K3zhIH1zmpIGSG3GJTWLIoAx+sR4kJ1wqpGKMwWJ5IYXBsFxMdvGw023t0pz2CQStlnNbbNhnZY/HMYFBCsCg==
   dependencies:
     invariant "^2.2.4"
+
+"@react-native-picker/picker@^2.4.8":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.4.8.tgz#a1a21f3d6ecadedbc3f0b691a444ddd7baa081f8"
+  integrity sha512-5NQ5XPo1B03YNqKFrV6h9L3CQaHlB80wd4ETHUEABRP2iLh7FHLVObX2GfziD+K/VJb8G4KZcZ23NFBFP1f7bg==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -2709,6 +2714,11 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
+"@types/invariant@^2.2.35":
+  version "2.2.35"
+  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.35.tgz#cd3ebf581a6557452735688d8daba6cf0bd5a3be"
+  integrity sha512-DxX1V9P8zdJPYQat1gHyY0xj3efl8gnMVjiM9iCY6y27lj+PoQWkgjt8jDqmovPqULkKVpKRg8J36iQiA+EtEg==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz"
@@ -3015,6 +3025,15 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+
+axios@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.2.tgz#7ac517f0fa3ec46e0e636223fd973713a09c72b3"
+  integrity sha512-1M3O703bYqYuPhbHeya5bnhpYVsDDRyQSabNja04mZtboLNSuZ4YrltestrLXfHgmzua4TpUqRiVKbiQuo2epw==
+  dependencies:
+    follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 babel-core@^7.0.0-bridge.0:
   version "7.0.0-bridge.0"
@@ -3406,6 +3425,31 @@ charenc@0.0.2, charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.npmjs.org/charenc/-/charenc-0.0.2.tgz"
   integrity sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==
+
+cheerio-select@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/cheerio-select/-/cheerio-select-2.1.0.tgz#4d8673286b8126ca2a8e42740d5e3c4884ae21b4"
+  integrity sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==
+  dependencies:
+    boolbase "^1.0.0"
+    css-select "^5.1.0"
+    css-what "^6.1.0"
+    domelementtype "^2.3.0"
+    domhandler "^5.0.3"
+    domutils "^3.0.1"
+
+cheerio@^1.0.0-rc.12:
+  version "1.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.12.tgz#788bf7466506b1c6bf5fae51d24a2c4d62e47683"
+  integrity sha512-VqR8m68vM46BNnuZ5NtnGBKIE/DfN0cRIzg9n40EIq9NOv90ayxLBXA8fXC5gquFRGJSTRqBq25Jt2ECLR431Q==
+  dependencies:
+    cheerio-select "^2.1.0"
+    dom-serializer "^2.0.0"
+    domhandler "^5.0.3"
+    domutils "^3.0.1"
+    htmlparser2 "^8.0.1"
+    parse5 "^7.0.0"
+    parse5-htmlparser2-tree-adapter "^7.0.0"
 
 chownr@^2.0.0:
   version "2.0.0"
@@ -3923,7 +3967,7 @@ domelementtype@^2.3.0:
   resolved "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz"
   integrity sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==
 
-domhandler@^5.0.1, domhandler@^5.0.2:
+domhandler@^5.0.1, domhandler@^5.0.2, domhandler@^5.0.3:
   version "5.0.3"
   resolved "https://registry.npmjs.org/domhandler/-/domhandler-5.0.3.tgz"
   integrity sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==
@@ -3973,7 +4017,7 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-entities@^4.2.0:
+entities@^4.2.0, entities@^4.3.0, entities@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/entities/-/entities-4.4.0.tgz"
   integrity sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==
@@ -4384,6 +4428,11 @@ flow-parser@0.*, flow-parser@^0.121.0:
   resolved "https://registry.npmjs.org/flow-parser/-/flow-parser-0.121.0.tgz"
   integrity sha512-1gIBiWJNR0tKUNv8gZuk7l9rVX06OuLzY9AoGio7y/JT4V1IZErEMEq2TJS+PFcw/y0RshZ1J/27VfK1UQzYVg==
 
+follow-redirects@^1.15.0:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
+
 fontfaceobserver@^2.1.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/fontfaceobserver/-/fontfaceobserver-2.3.0.tgz"
@@ -4398,6 +4447,15 @@ form-data@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/form-data/-/form-data-3.0.1.tgz"
   integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
+
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
@@ -4687,6 +4745,16 @@ hosted-git-info@^3.0.2:
   integrity sha512-aXpmwoOhRBrw6X3j0h5RloK4x1OzsxMPyxqIHyNfSe2pypkVTZFpEiRoSipPEPlMrh0HW/XsjkJ5WgnCirpNUw==
   dependencies:
     lru-cache "^6.0.0"
+
+htmlparser2@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-8.0.1.tgz#abaa985474fcefe269bc761a779b544d7196d010"
+  integrity sha512-4lVbmc1diZC7GUJQtRQ5yBAeUCL1exyMwmForWkRLnwyzWBFxN633SALPMGYaWZvKe9j1pRZJpauvmxENSp/EA==
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    domutils "^3.0.1"
+    entities "^4.3.0"
 
 http-errors@2.0.0:
   version "2.0.0"
@@ -6356,6 +6424,21 @@ parse-png@^2.1.0:
   dependencies:
     pngjs "^3.3.0"
 
+parse5-htmlparser2-tree-adapter@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-7.0.0.tgz#23c2cc233bcf09bb7beba8b8a69d46b08c62c2f1"
+  integrity sha512-B77tOZrqqfUfnVcOrUvfdLbz4pu4RopLD/4vmu3HUPswwTA8OH0EMW9BlWR2B0RCoiZRAHEUu7IxeP1Pd1UU+g==
+  dependencies:
+    domhandler "^5.0.2"
+    parse5 "^7.0.0"
+
+parse5@^7.0.0:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.1.2.tgz#0736bebbfd77793823240a23b7fc5e010b7f8e32"
+  integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
+  dependencies:
+    entities "^4.4.0"
+
 parseurl@~1.3.3:
   version "1.3.3"
   resolved "https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz"
@@ -6527,6 +6610,11 @@ prop-types@^15.5.4, prop-types@^15.7.2, prop-types@^15.8.1:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
+
 pump@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/pump/-/pump-3.0.0.tgz"
@@ -6653,10 +6741,10 @@ react-native-elements@^3.4.3:
     react-native-ratings "8.0.4"
     react-native-size-matters "^0.3.1"
 
-react-native-gesture-handler@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz"
-  integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==
+react-native-gesture-handler@~2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.8.0.tgz#ef9857871c10663c95a51546225b6e00cd4740cf"
+  integrity sha512-poOSfz/w0IyD6Qwq7aaIRRfEaVTl1ecQFoyiIbpOpfNTjm2B1niY2FLrdVQIOtIOe+K9nH55Qal04nr4jGkHdQ==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
@@ -6697,14 +6785,14 @@ react-native-ratings@8.0.4:
   dependencies:
     lodash "^4.17.15"
 
-react-native-reanimated@^2.14.4:
-  version "2.14.4"
-  resolved "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.14.4.tgz"
-  integrity sha512-DquSbl7P8j4SAmc+kRdd75Ianm8G+IYQ9T4AQ6lrpLVeDkhZmjWI0wkutKWnp6L7c5XNVUrFDUf69dwETLCItQ==
+react-native-reanimated@~2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.12.0.tgz#5821eecfb1769b1617a67a2d4dec12fdeedb2b6e"
+  integrity sha512-nrlPyw+Hx9u4iJhZk9PoTvDo/QmVAd+bo7OK9Tv3hveNEF9++5oig/g3Uv9V93shy9avTYGsUprUvAEt/xdzeQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"
-    convert-source-map "^1.7.0"
+    "@types/invariant" "^2.2.35"
     invariant "^2.2.4"
     lodash.isequal "^4.5.0"
     setimmediate "^1.0.5"
