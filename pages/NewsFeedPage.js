@@ -45,7 +45,6 @@ const NewsFeed = () => {
   ];
 
   return (
-    <ScrollView>
       <Provider>
         <View style={styles.container}>
           {news.map((n, i) => (
@@ -59,7 +58,6 @@ const NewsFeed = () => {
           ))}
         </View>
       </Provider>
-    </ScrollView>
   );
 };
 

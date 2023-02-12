@@ -9,28 +9,28 @@ const AboutUsPage = () => (
       style={styles.image}
     />
     <Text style={styles.text}>
-      We a team of O68 devs, working together to deliver quality products. 
+      Sme tím vývojárov O68, ktorí spoločne pracujú na poskytovaní kvalitných produktov.
     </Text>
     <Divider />
     <List.Item
-      title="Follow us on Twitter"
+      title="Sledujte nás na Twitteri"
       left={props => <List.Icon {...props} icon="twitter" />}
       right={props => (
         <IconButton
           {...props}
           icon="open-in-new"
-          onPress={() => Linking.openURL('https://twitter.com/ToDoUK_log')}
+          onPress={() => Linking.openURL('https://twitter.com/ToDo_UK')}
         />
       )}
     />
     <List.Item
-      title="Our design on Figma"
-      left={props => <List.Icon {...props} icon="map" />}
+      title="Poskytnúť spätnú väzbu "
+      left={props => <List.Icon {...props} icon="mail" />}
       right={props => (
         <IconButton
           {...props}
           icon="open-in-new"
-          onPress={() => Linking.openURL('https://www.figma.com/file/8NhZdxQY6rSpuyfNY1VbeZ/ToDoUk?node-id=0%3A1&t=QnQFD8NnUDTNCnE4-0')}
+          onPress={() => Linking.openURL('mailto:feedback.todouk@gmail.com?subject=Feedback&body=Poskytnite svoju spätnú väzbu')}
         />
       )}
     />

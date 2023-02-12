@@ -97,7 +97,7 @@ function App() {
           <DrawerNavigator.Screen
             name="Home"
             component={HomePage}
-            options={{ title: 'Domov' }}
+            options={{ title: 'Home' }}
           />
           <DrawerNavigator.Screen
             name="Todo"

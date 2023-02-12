@@ -97,60 +97,60 @@ const TodoApp = () => {
         </Chip>
       </View>
       {/* <KeyboardAvoidingView style={styles.todoList} behavior="padding"> */}
-        <FlatList
-          data={filteredTodos()}
-          renderItem={({ item }) => (
-            <Swipeable renderRightActions={(_, dragX) => (
-              <View style={styles.rightActions}>
-                {item.key === editingKey ? (
-                  <View style={styles.editActions}>
-                    <Button onPress={saveEdit}>Uložiť</Button>
-                  </View>
-                ) : (
-                  <View style={styles.swipeActions}>
-                    <Button onPress={() => handleEditPress(item.key, item.text)}>Upraviť</Button>
-                    <Button onPress={() => removeTodo(item.key)}>Vymazať</Button>
-                  </View>
-                )}
-              </View>
-            )}>
-              <View style={styles.todoItem}>
-                <Checkbox
-                  status={item.completed ? 'checked' : 'unchecked'}
-                  onPress={() => handleTodoPress(item.key)}
-                />
-                <Text
-                  style={[
-                    styles.todoText,
-                    item.completed ? styles.completed : null,
-                    item.key === editingKey ? styles.editing : null
-                  ]}
-                  onPress={() => handleTodoPress(item.key)}
-                >
-                  {item.text}
-                </Text>
-              </View>
-            </Swipeable>
-          )}
-        />
-        {editingKey ? (
-          <TextInput
-            style={styles.todoInput}
-            value={editText}
-            onChangeText={setEditText}
-            onSubmitEditing={saveEdit}
-          />
-        ) : (
-          <TextInput
-            style={styles.todoInput}
-            value={text}
-            onChangeText={setText}
-            onSubmitEditing={addTodo}
-            placeholder="Pridať úlohu"
-            returnKeyType="done"
-            blurOnSubmit={false}
-          />
+      <FlatList
+        data={filteredTodos()}
+        renderItem={({ item }) => (
+          <Swipeable renderRightActions={(_, dragX) => (
+            <View style={styles.rightActions}>
+              {item.key === editingKey ? (
+                <View style={styles.editActions}>
+                  <Button onPress={saveEdit}>Uložiť</Button>
+                </View>
+              ) : (
+                <View style={styles.swipeActions}>
+                  <Button onPress={() => handleEditPress(item.key, item.text)}>Upraviť</Button>
+                  <Button onPress={() => removeTodo(item.key)}>Vymazať</Button>
+                </View>
+              )}
+            </View>
+          )}>
+            <View style={styles.todoItem}>
+              <Checkbox
+                status={item.completed ? 'checked' : 'unchecked'}
+                onPress={() => handleTodoPress(item.key)}
+              />
+              <Text
+                style={[
+                  styles.todoText,
+                  item.completed ? styles.completed : null,
+                  item.key === editingKey ? styles.editing : null
+                ]}
+                onPress={() => handleTodoPress(item.key)}
+              >
+                {item.text}
+              </Text>
+            </View>
+          </Swipeable>
         )}
+      />
+      {editingKey ? (
+        <TextInput
+          style={styles.todoInput}
+          value={editText}
+          onChangeText={setEditText}
+          onSubmitEditing={saveEdit}
+        />
+      ) : (
+        <TextInput
+          style={styles.todoInput}
+          value={text}
+          onChangeText={setText}
+          onSubmitEditing={addTodo}
+          placeholder="Pridať úlohu"
+          returnKeyType="done"
+          blurOnSubmit={false}
+        />
+      )}
       {/* </KeyboardAvoidingView> */}
     </View>
   );
