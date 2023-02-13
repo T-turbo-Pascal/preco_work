@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList, Text, AsyncStorage, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, FlatList, Text, AsyncStorage } from 'react-native';
 import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import { Swipeable } from 'react-native-gesture-handler';
 
@@ -7,6 +7,7 @@ const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
   const [filter, setFilter] = useState('all');
+  const [isSwiping, setIsSwiping] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,7 +97,6 @@ const TodoApp = () => {
           Nevykonáva sa
         </Chip>
       </View>
-      {/* <KeyboardAvoidingView style={styles.todoList} behavior="padding"> */}
       <FlatList
         data={filteredTodos()}
         renderItem={({ item }) => (
@@ -151,7 +151,6 @@ const TodoApp = () => {
           blurOnSubmit={false}
         />
       )}
-      {/* </KeyboardAvoidingView> */}
     </View>
   );
 };
@@ -188,9 +187,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: 'gray',
   },
-  editing: {
-    backgroundColor: '#f9f9f9',
-  },
   todoInput: {
     height: 48,
     backgroundColor: '#fff',
@@ -202,13 +198,11 @@ const styles = StyleSheet.create({
   rightActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'red',
     justifyContent: 'flex-end',
   },
   swipeActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'red',
     padding: 8,
     width: 160,
     justifyContent: 'flex-end',
@@ -216,7 +210,6 @@ const styles = StyleSheet.create({
   editActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'yellow',
     padding: 8,
     width: 128,
     justifyContent: 'flex-end',
