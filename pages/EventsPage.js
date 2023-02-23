@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Card, Title, Paragraph, Button } from 'react-native-paper';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 
 const events = [
   {
@@ -27,9 +29,25 @@ const events = [
 ];
 
 const EventPage = () => {
-  const handleRemindMe = (event) => {
-    // Add logic to remind the user about the event
-    console.log(`Reminding user about ${event.title}`);
+  
+  const handleRemindMe = async (event) => {
+    // Request permission to send notifications (optional)
+    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    if (status !== 'granted') {
+      alert('Permission to send notifications has not been granted');
+      return;
+    }
+
+    // Schedule the notification
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: `Reminder: ${event.title}`,
+        body: `${event.description}\nLocation: ${event.location}\nTime: ${event.time}\nDate: ${event.date}`
+      },
+      trigger: { seconds: 10 }, // Show the notification 10 seconds after scheduling
+    });
+
+    console.log(`Scheduled reminder for ${event.title}`);
   };
 
   return (
@@ -57,7 +75,7 @@ const EventPage = () => {
           </Card>
         ))}
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 };
 
