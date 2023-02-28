@@ -30,7 +30,7 @@ const SettingsPage = () => {
         <Text style={{ fontSize: 20, marginTop: 10 }}>John Doe</Text>
       </View>
       <Divider />
-      <List.Accordion
+      {/* <List.Accordion
         title="Group"
         description={selectedGroup.title}
         expanded={isAccordionExpanded}
@@ -46,7 +46,7 @@ const SettingsPage = () => {
             }}
           />
         ))}
-      </List.Accordion>
+      </List.Accordion> */}
       {settingsData.map((item) => (
         <List.Item
           key={item.id}

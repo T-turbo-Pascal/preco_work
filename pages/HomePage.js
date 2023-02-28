@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Chip } from 'react-native-paper';
+import { StatusBar } from 'expo-status-bar';
+
 
 const Schedule = () => {
     const [selectedDay, setSelectedDay] = useState('Pondelok');
@@ -143,6 +145,7 @@ const Schedule = () => {
                     </View>
                 ))}
             </ScrollView>
+            <StatusBar style="dark" />
         </View>
     );
 };
